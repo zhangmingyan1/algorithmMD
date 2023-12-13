@@ -320,8 +320,35 @@
 
     []解释
 
+    回溯法的搜索过程就是一个树形结构的遍历过程，可以用for循环用来横向遍历，递归的过程事纵向遍历。
 
     []解题思路
+
+    一般要画出一个递归树，然后用递归写代码。
+
+    从左向右取数，取过的数不在重复取：
+    取1： 在1,2,3 中取一个数
+    取2： 在3，4中取一个数
+    取3： 在4中取一个数
+    取4： 空
+
+    `
+
+        const combineHelper = (n ,k, startIndex) => {
+            if (path.length === k) {
+                result.push([...path])
+                return
+            }
+            for (let i = startIndex; i <= n - (k - path.length) + 1; i++) { 
+                path.push(i); // -> [1, ] 横向
+                combineHelper(n ,k, i + 1); // -> [1, 2], [1, 3], [1, 4] 纵向
+                path.pop();
+            }
+        }
+
+    `
+
+2. 
 
 # 递归
 
