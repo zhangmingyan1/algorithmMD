@@ -339,7 +339,7 @@
                 result.push([...path])
                 return
             }
-            for (let i = startIndex; i <= n - (k - path.length) + 1; i++) { 
+            for (let i = startIndex; i <= n; i++) { 
                 path.push(i); // -> [1, ] 横向
                 combineHelper(n ,k, i + 1); // -> [1, 2], [1, 3], [1, 4] 纵向
                 path.pop();
@@ -347,8 +347,29 @@
         }
 
     `
+    [] 剪枝优化
 
-2. 
+    `
+        const combineHelper = (n ,k, startIndex) => {
+            if (path.length === k) {
+                result.push([...path])
+                return
+            }
+            for (let i = startIndex; i <= n - (k - path.length) + 1; i++) {
+                path.push(i);
+                combineHelper(n ,k, i + 1);
+                path.pop();
+            }
+        }
+    `
+
+2. 组合总和
+
+    找出所有相加之和为 n 的 k 个数的组合。组合中只允许含有 1 - 9 的正整数，并且每种组合中不存在重复的数字。
+
+    []解释
+
+    []解题思路
 
 # 递归
 
